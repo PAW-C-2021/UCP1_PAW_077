@@ -1,0 +1,59 @@
+﻿@model IEnumerable<UCP1_PAW_077.Models.Testimoni>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName("Nama")
+            </th>
+            <th>
+                @Html.DisplayName("Deskripsi")
+            </th>
+            <th>
+                @Html.DisplayName("Kode Produk")
+            </th>
+            <th>
+                @Html.DisplayName("Id Testimoni")
+            </th>
+            <th>
+                @Html.DisplayName("Kode Jenis Produk")
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nama)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Deskripsi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KodeProduk)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdTestimoniNavigation.KodeProduk)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KodeJenisProdukNavigation.KodeJenisProduk)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdTestimoni"><i class="fas fa-edit"></i></a> |
+                <a asp-action="Details" asp-route-id="@item.IdTestimoni"><i class="fas fa-info-circle"></i></a> |
+                <a asp-action="Delete" asp-route-id="@item.IdTestimoni"><i class="fas fa-trash-alt"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
